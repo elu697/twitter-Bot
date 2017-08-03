@@ -12,8 +12,6 @@ class Listener(tweepy.StreamListener):
         if str(status.in_reply_to_screen_name)==Twitter_ID and str(status.user.screen_name)!=Twitter_ID:
             print(str(datetime.datetime.today()))
             api.create_favorite(status.id)
-        #            tweet = "@" + str(status.user.screen_name) + " " + "Hello！\n" + str(datetime.datetime.today())
-        #            api.update_status(status=tweet)
         return True
     
     def on_error(self, status_code):
@@ -26,7 +24,7 @@ class Listener(tweepy.StreamListener):
 
 
 
-consumer_key = ""#access https://apps.twitter.com/ and get consumer key
+consumer_key = ""#access s and get consumer key
 consumer_secret = ""
 access_token = ""
 Twitter_ID = ""#Your TwitterID(Don't need @)
@@ -34,8 +32,6 @@ Twitter_ID = ""#Your TwitterID(Don't need @)
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 api = tweepy.API(auth)
-auth = tweepy.OAuthHandler(CK, CS)
-auth.set_access_token(AT, AS)
 
 listener = Listener()
 stream = tweepy.Stream(auth, listener)
